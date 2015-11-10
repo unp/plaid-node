@@ -274,13 +274,11 @@ Plaid.getInstitutions = function(env, callback) {
   }, callback);
 };
 
-Plaid.searchInstitutions = function(env, callback, query) {
+Plaid.searchInstitutions = function(env, query, callback) {
   this._publicRequest({
-    uri: env + '/institutions/search',
+    uri: env + '/institutions/search?q=' + query,
     method: 'GET',
-    body: {
-      q: query
-    },
+    body: {},
   }, callback);
 };
 
