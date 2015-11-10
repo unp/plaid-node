@@ -274,6 +274,16 @@ Plaid.getInstitutions = function(env, callback) {
   }, callback);
 };
 
+Plaid.searchInstitutions = function(env, callback, query) {
+  this._publicRequest({
+    uri: env + '/institutions/search',
+    method: 'GET',
+    body: {
+      q: query
+    },
+  }, callback);
+};
+
 function handleApiResponse(err, res, $body, includeMfaResponse, callback) {
   if (res != null) {
     $body = R.assoc('statusCode', res.statusCode, $body);
